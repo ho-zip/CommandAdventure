@@ -1,0 +1,15 @@
+# HTTP: http://localhost:3000
+# HTTPS가 필요하면 리버스 프록시(Caddy/nginx)를 앞단에 두고 TLS 종료하세요.
+services:
+  command-adventure:
+    build: ./server
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: "3000"
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL_COMMAND: ${OPENAI_MODEL_COMMAND:-}
+      OPENAI_MODEL_REPLY: ${OPENAI_MODEL_REPLY:-}
+    volumes:
+      # 프롬프트만 호스트에서 마운트해 수정 즉시 반영 (코드는 이미지 빌드 시 포함)
+      - ./server/prompt.json:/app/prompt.json:ro

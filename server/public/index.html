@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Command Adventure</title>
+    <link rel="stylesheet" href="/css/game.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="top-bar">
+        <h1>Command Adventure</h1>
+        <div class="top-bar-actions">
+          <button type="button" id="btn-help" class="btn-help" title="이름 안내">설명서</button>
+          <button type="button" id="btn-restart" class="btn-restart" title="맵 초기화">재시작</button>
+        </div>
+      </header>
+      <main class="main">
+        <div id="map-wrap" class="map-wrap">
+          <div id="map" class="map"></div>
+          <div id="player" class="player"></div>
+          <div id="bubble" class="bubble" hidden></div>
+        </div>
+        <aside class="sidebar">
+          <section class="inventory">
+            <h2>인벤토리</h2>
+            <div class="inv-grid">
+              <div class="inv-slot" title="나무">
+                <span id="inv-icon-wood" class="inv-icon inv-wood"></span>
+                <span id="inv-wood" class="inv-count">0</span>
+              </div>
+              <div class="inv-slot" title="철">
+                <span id="inv-icon-iron" class="inv-icon inv-iron"></span>
+                <span id="inv-iron" class="inv-count">0</span>
+              </div>
+              <div class="inv-slot" title="드래곤의 정수">
+                <span id="inv-icon-ess" class="inv-icon inv-ess"></span>
+                <span id="inv-ess" class="inv-count">0</span>
+              </div>
+            </div>
+            <h2>장비</h2>
+            <div id="eq-weapon" class="eq-slot" title="무기">
+              <span id="eq-label">맨손</span>
+            </div>
+          </section>
+          <section class="chat-panel">
+            <h2 class="chat-panel-title">대화</h2>
+            <div id="chat-log" class="chat-log"></div>
+            <form id="chat-form" class="chat-form">
+              <input id="chat-input" type="text" autocomplete="off" placeholder="캐릭터에게 말을 건네세요…" />
+              <button type="submit">전송</button>
+            </form>
+          </section>
+        </aside>
+      </main>
+    </div>
+    <div id="help-overlay" class="help-overlay" hidden aria-hidden="true">
+      <div class="help-overlay-box" role="dialog" aria-labelledby="help-title">
+        <h2 id="help-title" class="help-title">설명서</h2>
+        <section class="help-section">
+          <h3>오브젝트 이름</h3>
+          <p class="help-list">나무, 광맥, 모루, 포탈</p>
+        </section>
+        <section class="help-section">
+          <h3>몬스터 이름</h3>
+          <p class="help-list">드래곤, 마왕</p>
+        </section>
+        <button type="button" id="btn-help-close" class="btn-help-close">닫기</button>
+      </div>
+    </div>
+    <div id="overlay" class="overlay" hidden>
+      <div class="overlay-box">
+        <p id="overlay-text"></p>
+        <p class="overlay-hint">상단의 <strong>재시작</strong> 버튼으로 새 게임을 시작할 수 있습니다.</p>
+      </div>
+    </div>
+    <div id="loading" class="loading" hidden>로딩 중…</div>
+    <script type="module" src="/js/app.js"></script>
+  </body>
+</html>
